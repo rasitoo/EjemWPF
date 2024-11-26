@@ -38,7 +38,7 @@
                 <MenuItem Command="SelectAll" />
             </MenuItem>
             <MenuItem Header="_Ver">
-                <MenuItem Header="Pantalla completa" Command="" />
+                <MenuItem Header="Pantalla completa" Command="{x:Static local:CustomCommands.FullScreen}"/>
             </MenuItem>
             <MenuItem Header="_Herramientas">
                 <MenuItem Header="Mostrar Herramientas" Click="ShowTools_Click"/>
@@ -77,5 +77,8 @@
         <CommandBinding Command="ApplicationCommands.Redo"
                         Executed="RedoCommand_Executed"
                         CanExecute="RedoCommand_CanExecute"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.FullScreen}"
+                        Executed="FullScreen_Executed"
+                        CanExecute="FullScreen_CanExecute" />   
     </Window.CommandBindings>
 </Window>

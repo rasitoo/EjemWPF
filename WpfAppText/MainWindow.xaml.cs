@@ -95,5 +95,14 @@ namespace WpfAppText
                             Autor:   Rodrigo Tapiador Cano
                             """, "Ayuda");
         }
+        private void FullScreen_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+        }
+        private void FullScreen_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (WindowState != WindowState.Maximized)
+                e.CanExecute = true;
+        }
     }
 }

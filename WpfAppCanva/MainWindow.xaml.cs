@@ -10,11 +10,15 @@ namespace WpfAppCanva;
 
 public partial class MainWindow : Window
 {
+    public static readonly RoutedUICommand FullScreen = new RoutedUICommand(
+    "FullScreen", "FullScreen", typeof(MainWindow));
 
     private Stack<Stroke> _redoStrokes = new Stack<Stroke>(); //Pila para las strokes borradas
     public MainWindow()
     {
         InitializeComponent();
+        CommandBindings.Add(new CommandBinding(FullScreen, FullScreen_Executed));
+
     }
     private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
     {   //Sacado de https://stackoverflow.com/questions/6246009/inkcanvas-load-save-operations#:~:text=You%20can%20do%20this%20by%20using%20the%20StrokeCollection.Save,this%20again%20and%20have%20the%20individual%20strokes%20accessible.
@@ -147,5 +151,14 @@ public partial class MainWindow : Window
     private void RedoCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
     {
         e.CanExecute = _redoStrokes.Count > 0;
+    }
+    private void FullScreen_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        WindowState = WindowState.Maximized;
+    }
+    private void FullScreen_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+    {
+        if (WindowState != WindowState.Maximized)
+            e.CanExecute = true;
     }
 }

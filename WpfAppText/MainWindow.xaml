@@ -26,6 +26,7 @@
                 <MenuItem Command="SelectAll" />
             </MenuItem>
             <MenuItem Header="_Ver">
+                <MenuItem Header="Pantalla completa" Command="{x:Static local:CustomCommands.FullScreen}"/>
             </MenuItem>
             <MenuItem Header="_Ayuda">
                 <MenuItem  Command="Help" />
@@ -41,5 +42,8 @@
             Executed="OpenCommand_Executed"/>
         <CommandBinding Command="ApplicationCommands.Help"
             Executed="HelpCommand_Executed"/>
+        <CommandBinding Command="{x:Static local:CustomCommands.FullScreen}"
+                        Executed="FullScreen_Executed"
+                        CanExecute="FullScreen_CanExecute" />
     </Window.CommandBindings>
 </Window>
